@@ -37,10 +37,6 @@
 
 // Entrega simulador interactivo
 
-// let impuesto = prompt('Ingrese el procentaje de impuestos')
-
-// let precio = prompt('Ingrese el precio del producto')
-
 calculo()
 
     function calculo() {

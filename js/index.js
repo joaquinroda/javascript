@@ -183,6 +183,74 @@
 
 // ---------  Entrega final 1 --------------
 
+// class Producto {
+//     constructor (idProd, item, desc, precio) {
+//         this.idProd = idProd
+//         this.item = item
+//         this.desc = desc
+//         this.precio = precio
+//     }
+// }
+
+// const productos = [
+
+// ]
+
+
+// ingreseProd()
+
+// function ingreseProd() {
+
+//     let idProd = Number(prompt("Ingrese un ID para el producto"))
+//     let item = prompt("Ingrese el producto")
+//     let desc = prompt("Ingrese una breve descripción del producto")
+//     let precio = Number(prompt("Ingrese un precio para el producto"))
+
+
+//     if (productos.find( (Producto) => Producto.idProd === idProd) ) {
+//         alert("Ese ID ya está en uso, ingresalo nuevamente")
+//         ingreseProd()
+//     } else {
+//         productos.push( new Producto(idProd, item, desc, precio) )
+//     }
+
+// }
+
+// let otro = prompt("Desea añadir otro producto? Responde: Si / No")
+
+
+// if (otro.toLowerCase() === "si") {
+//     while (otro.toLowerCase() === "si") {
+//         ingreseProd()
+//         otro = prompt("Desea añadir otro producto? Responde: Si / No")
+//     }
+//     } else if (otro.toLowerCase() === "no") {
+//         console.log('¡Gracias por añadir productos, hasta la próxima!');
+//     } else {
+//         alert('Esa no es una respuesta válida');
+//     }
+
+
+// console.log(productos)
+
+
+// let filtrar = prompt("¿Desea ordenar los productos de menor a mayor? Si / No")
+
+// if (filtrar.toLowerCase() === "si") {
+//     const ordenarMenMay = productos.sort((a, b) => a.precio - b.precio)
+//     console.log(ordenarMenMay)
+// } else if (filtrar.toLowerCase() === "no") {
+//     const ordenarMayMen = productos.sort((a, b) => b.precio - a.precio)
+//     console.log(ordenarMayMen)
+// }
+
+
+
+//---------------------------------------------------------------
+
+
+// Entrega complementaria 2: Interactuar con HTML ---------------
+
 class Producto {
     constructor (idProd, item, desc, precio) {
         this.idProd = idProd
@@ -195,6 +263,29 @@ class Producto {
 const productos = [
 
 ]
+
+productos.push(new Producto(1, "Remera", "Remera Negra", 3000))
+
+
+productos.push(new Producto(2, "Pantalon", "Pantalon Azul", 5000))
+
+
+productos.push(new Producto(3, "Zapatillas", "Zapatillas Nike", 15000))
+
+
+productos.push(new Producto(4, "Medias", "Medias de Shrek", 1000))
+
+
+productos.push(new Producto(5, "Camisa", "Camisa Blanca", 5000))
+
+
+productos.push(new Producto(6, "Vestido", "Vestido Rosa", 7000))
+
+
+productos.push(new Producto(7, "Saco", "Saco Negro", 18000))
+
+
+productos.push(new Producto(8, "Campera", "Campera de Abrigo", 25000))
 
 ingreseProd()
 
@@ -232,17 +323,21 @@ if (otro.toLowerCase() === "si") {
 
 console.log(productos)
 
+const galeria = document.querySelector("#galery")
 
-let filtrar = prompt("¿Desea ordenar los productos de menor a mayor? Si / No")
 
-if (filtrar.toLowerCase() === "si") {
-    const ordenarMenMay = productos.sort((a, b) => a.precio - b.precio)
-    console.log(ordenarMenMay)
-} else if (filtrar.toLowerCase() === "no") {
-    const ordenarMayMen = productos.sort((a, b) => b.precio - a.precio)
-    console.log(ordenarMayMen)
-}
+const templateCard = document.querySelector("template")
+const cardProd = templateCard.content.querySelector("div")
 
 
 
-//---------------------------------------------------------------
+productos.forEach((prod) => {
+    let cardProdClon = cardProd.cloneNode(cardProd, true)
+    cardProdClon.children[0].innerText = prod.item
+    cardProdClon.children[1].innerText = "ID: " + prod.idProd
+    cardProdClon.children[2].innerText = prod.desc
+    cardProdClon.children[3].innerText = "Precio: " + prod.precio
+
+
+    galeria.appendChild(cardProdClon)
+});

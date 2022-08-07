@@ -1,4 +1,66 @@
-.title {
-    font-size: 3em;
+
+body {
+    align-items: center;
+}
+
+header > h1 {
     text-align: center;
+    font-size: 3rem;
+}
+
+
+.subtitle {
+    background-color: #f3d6d6;
+    font-family: "Orelega One", cursive;
+    text-align: center;
+    border-radius: 10px;
+    width: 100%;
+    padding: 7px;
+    margin-top: 100px;
+    margin-bottom: 20px;
+    font-size: 2em;
+}
+
+.grid-container {
+    display: grid;
+    gap: 1em;
+    justify-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: lightcoral;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.grid-container > div {
+    width: 250px;
+    height: 400px;
+    margin-top: 30px;
+    background-color: whitesmoke;
+    border: 3px solid black;
+    padding: 5px;
+    
+}
+
+.nombreprod {
+    color: rgb(206, 109, 96);
+    background-color: lightgreen;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 150px;
+}
+
+.pCard {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.3em;
+}
+
+.button {
+    border-radius: 10px;
+    margin-left: 140px;
+    width: 100px;
+    margin-top: 10px;
 }

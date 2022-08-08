@@ -249,7 +249,103 @@
 //---------------------------------------------------------------
 
 
-// Entrega complementaria 2: Interactuar con HTML ---------------
+// // Entrega complementaria 2: Interactuar con HTML ---------------
+
+// class Producto {
+//     constructor (idProd, item, desc, precio) {
+//         this.idProd = idProd
+//         this.item = item
+//         this.desc = desc
+//         this.precio = precio
+//     }
+// }
+
+// const productos = [
+
+// ]
+
+// productos.push(new Producto(1, "Remera", "Remera Negra", 3000))
+
+
+// productos.push(new Producto(2, "Pantalon", "Pantalon Azul", 5000))
+
+
+// productos.push(new Producto(3, "Zapatillas", "Zapatillas Nike", 15000))
+
+
+// productos.push(new Producto(4, "Medias", "Medias de Shrek", 1000))
+
+
+// productos.push(new Producto(5, "Camisa", "Camisa Blanca", 5000))
+
+
+// productos.push(new Producto(6, "Vestido", "Vestido Rosa", 7000))
+
+
+// productos.push(new Producto(7, "Saco", "Saco Negro", 18000))
+
+
+// productos.push(new Producto(8, "Campera", "Campera de Abrigo", 25000))
+
+// ingreseProd()
+
+// function ingreseProd() {
+
+//     let idProd = Number(prompt("Ingrese un ID para el producto"))
+//     let item = prompt("Ingrese el producto")
+//     let desc = prompt("Ingrese una breve descripción del producto")
+//     let precio = Number(prompt("Ingrese un precio para el producto"))
+
+
+//     if (productos.find( (Producto) => Producto.idProd === idProd) ) {
+//         alert("Ese ID ya está en uso, ingresalo nuevamente")
+//         ingreseProd()
+//     } else {
+//         productos.push( new Producto(idProd, item, desc, precio) )
+//     }
+
+// }
+
+// let otro = prompt("Desea añadir otro producto? Responde: Si / No")
+
+
+// if (otro.toLowerCase() === "si") {
+//     while (otro.toLowerCase() === "si") {
+//         ingreseProd()
+//         otro = prompt("Desea añadir otro producto? Responde: Si / No")
+//     }
+//     } else if (otro.toLowerCase() === "no") {
+//         console.log('¡Gracias por añadir productos, hasta la próxima!');
+//     } else {
+//         alert('Esa no es una respuesta válida');
+//     }
+
+
+// console.log(productos)
+
+// const galeria = document.querySelector("#galery")
+
+
+// const templateCard = document.querySelector("template")
+// const cardProd = templateCard.content.querySelector("div")
+
+
+
+// productos.forEach((prod) => {
+//     let cardProdClon = cardProd.cloneNode(cardProd, true)
+//     cardProdClon.children[0].innerText = prod.item
+//     cardProdClon.children[1].innerText = "ID: " + prod.idProd
+//     cardProdClon.children[2].innerText = prod.desc
+//     cardProdClon.children[3].innerText = "Precio: " + prod.precio
+
+
+//     galeria.appendChild(cardProdClon)
+// });
+
+
+
+// Entrega obligatoria: Incorporar Eventos ----------------------
+
 
 class Producto {
     constructor (idProd, item, desc, precio) {
@@ -287,41 +383,47 @@ productos.push(new Producto(7, "Saco", "Saco Negro", 18000))
 
 productos.push(new Producto(8, "Campera", "Campera de Abrigo", 25000))
 
-ingreseProd()
 
-function ingreseProd() {
+const modalFormContenedor = document.querySelector("#modalContenedor")
+const btnAddProd = document.querySelector("#buttonAddProd")
 
-    let idProd = Number(prompt("Ingrese un ID para el producto"))
-    let item = prompt("Ingrese el producto")
-    let desc = prompt("Ingrese una breve descripción del producto")
-    let precio = Number(prompt("Ingrese un precio para el producto"))
+btnAddProd.addEventListener("click", () => {
+    modalFormContenedor.classList.add("verModalForm")
+})
+
+
+const inputID = document.querySelector("#input-ID")
+const inputProd = document.querySelector("#input-Prod")
+const inputDesc = document.querySelector("#input-Desc")
+const inputPrecio = document.querySelector("#input-Precio")
+
+const formularioAddProd = document.querySelector("#formularioAddProd")
+
+const btnAgregar = document.querySelector("#btnAgregarProd")
+
+formularioAddProd.addEventListener('submit', (event) => {
+    event.preventDefault() 
+
+
+    const idProd = Number(inputID.value)
+    const item = inputProd.value
+    const desc = inputDesc.value
+    const precio = Number(inputPrecio.value)
 
 
     if (productos.find( (Producto) => Producto.idProd === idProd) ) {
-        alert("Ese ID ya está en uso, ingresalo nuevamente")
-        ingreseProd()
+        alert("Ese ID ya está en uso, ingreselo nuevamente")
     } else {
         productos.push( new Producto(idProd, item, desc, precio) )
     }
-
-}
-
-let otro = prompt("Desea añadir otro producto? Responde: Si / No")
-
-
-if (otro.toLowerCase() === "si") {
-    while (otro.toLowerCase() === "si") {
-        ingreseProd()
-        otro = prompt("Desea añadir otro producto? Responde: Si / No")
-    }
-    } else if (otro.toLowerCase() === "no") {
-        console.log('¡Gracias por añadir productos, hasta la próxima!');
-    } else {
-        alert('Esa no es una respuesta válida');
-    }
+    
+    console.log(productos)
+    
+    formularioAddProd.reset()
+    modalFormContenedor.classList.remove("verModalForm")
+})
 
 
-console.log(productos)
 
 const galeria = document.querySelector("#galery")
 
@@ -340,4 +442,5 @@ productos.forEach((prod) => {
 
 
     galeria.appendChild(cardProdClon)
-});
+})
+

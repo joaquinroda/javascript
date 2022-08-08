@@ -21,6 +21,64 @@ header > h1 {
     font-size: 2em;
 }
 
+.boton-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3d6d6;
+    width: 100%;
+    height: 3vw;
+}
+
+.buttonAddProd {
+    width: 200px;
+    height: 30px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+}
+
+.buttonAddProd:hover {
+    background-color: rgb(65, 75, 78);
+}
+
+.modalContenedor {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+    transition: all .4s ease-in;
+
+    opacity: 0;
+    visibility: hidden;
+}
+
+.modalForm {
+    width: 600px;
+    height: 500px;
+    background-color: beige;
+    padding: 10px;
+    text-align: center;
+    font-size: 2rem;
+    border-radius: 25px;
+}
+
+.verModalForm {
+    opacity: 1;
+    visibility: visible;
+    z-index: 10;
+}
+
+.btnAgregarProd {
+    width: 60%;
+}
+
 .grid-container {
     display: grid;
     gap: 1em;
@@ -48,7 +106,7 @@ header > h1 {
     width: 100%;
     text-align: center;
     font-size: 1.8em;
-    margin-bottom: 150px;
+    margin-bottom: 90px;
 }
 
 .pCard {
@@ -58,9 +116,7 @@ header > h1 {
     font-size: 1.3em;
 }
 
-.button {
-    border-radius: 10px;
-    margin-left: 140px;
-    width: 100px;
+.buttonCarrito {
     margin-top: 10px;
+    border-radius: 10px;
 }

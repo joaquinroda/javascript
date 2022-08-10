@@ -385,6 +385,7 @@ productos.push(new Producto(8, "Campera", "Campera de Abrigo", 25000))
 
 
 const modalFormContenedor = document.querySelector("#modalContenedor")
+const modalFormDiv = document.querySelector('#modalForm')
 const btnAddProd = document.querySelector("#buttonAddProd")
 
 btnAddProd.addEventListener("click", () => {
@@ -401,6 +402,10 @@ const formularioAddProd = document.querySelector("#formularioAddProd")
 
 const btnAgregar = document.querySelector("#btnAgregarProd")
 
+const galeria = document.querySelector("#galery")
+const templateCard = document.querySelector("template")
+const cardProd = templateCard.content.querySelector("div")
+
 formularioAddProd.addEventListener('submit', (event) => {
     event.preventDefault() 
 
@@ -415,21 +420,30 @@ formularioAddProd.addEventListener('submit', (event) => {
         alert("Ese ID ya está en uso, ingreselo nuevamente")
     } else {
         productos.push( new Producto(idProd, item, desc, precio) )
+            let cardProdClon2 = cardProd.cloneNode(cardProd, true)
+            cardProdClon2.children[0].innerText = item
+            cardProdClon2.children[1].innerText = "ID: " + idProd
+            cardProdClon2.children[2].innerText = desc
+            cardProdClon2.children[3].innerText = "Precio: " + precio
+            galeria.appendChild(cardProdClon2)
+        
     }
-    
+
+
     console.log(productos)
     
     formularioAddProd.reset()
     modalFormContenedor.classList.remove("verModalForm")
+
 })
 
+modalFormContenedor.addEventListener('click', (event) => {
+        modalFormContenedor.classList.remove("verModalForm")
+})
 
-
-const galeria = document.querySelector("#galery")
-
-
-const templateCard = document.querySelector("template")
-const cardProd = templateCard.content.querySelector("div")
+modalFormDiv.addEventListener('click', (evento) => {
+    evento.stopPropagation()
+})
 
 
 
@@ -439,8 +453,6 @@ productos.forEach((prod) => {
     cardProdClon.children[1].innerText = "ID: " + prod.idProd
     cardProdClon.children[2].innerText = prod.desc
     cardProdClon.children[3].innerText = "Precio: " + prod.precio
-
-
     galeria.appendChild(cardProdClon)
 })
 

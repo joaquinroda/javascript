@@ -344,8 +344,9 @@
 
 
 
-// Entrega obligatoria: Incorporar Eventos ----------------------
+// Entrega Final ----------------------
 
+// Constructor y array productos 
 
 class Producto {
     constructor (idProd, item, desc, precio) {
@@ -384,6 +385,8 @@ productos.push(new Producto(7, "Saco", "Saco Negro", 18000))
 productos.push(new Producto(8, "Campera", "Campera de Abrigo", 25000))
 
 
+// Declaro constantes del Modal
+
 const modalFormContenedor = document.querySelector("#modalContenedor")
 const modalFormDiv = document.querySelector('#modalForm')
 const btnAddProd = document.querySelector("#buttonAddProd")
@@ -392,6 +395,9 @@ btnAddProd.addEventListener("click", () => {
     modalFormContenedor.classList.add("verModalForm")
 })
 
+
+
+// Declaro constantes para el form
 
 const inputID = document.querySelector("#input-ID")
 const inputProd = document.querySelector("#input-Prod")
@@ -403,8 +409,10 @@ const formularioAddProd = document.querySelector("#formularioAddProd")
 const btnAgregar = document.querySelector("#btnAgregarProd")
 
 const galeria = document.querySelector("#galery")
-const templateCard = document.querySelector("template")
-const cardProd = templateCard.content.querySelector("div")
+
+
+
+
 
 formularioAddProd.addEventListener('submit', (event) => {
     event.preventDefault() 
@@ -420,14 +428,9 @@ formularioAddProd.addEventListener('submit', (event) => {
         alert("Ese ID ya está en uso, ingreselo nuevamente")
     } else {
         productos.push( new Producto(idProd, item, desc, precio) )
-            let cardProdClon2 = cardProd.cloneNode(cardProd, true)
-            cardProdClon2.children[0].innerText = item
-            cardProdClon2.children[1].innerText = "ID: " + idProd
-            cardProdClon2.children[2].innerText = desc
-            cardProdClon2.children[3].innerText = "Precio: " + precio
-            galeria.appendChild(cardProdClon2)
-        
+
     }
+
 
 
     console.log(productos)
@@ -446,13 +449,36 @@ modalFormDiv.addEventListener('click', (evento) => {
 })
 
 
+// Carrito
 
-productos.forEach((prod) => {
-    let cardProdClon = cardProd.cloneNode(cardProd, true)
-    cardProdClon.children[0].innerText = prod.item
-    cardProdClon.children[1].innerText = "ID: " + prod.idProd
-    cardProdClon.children[2].innerText = prod.desc
-    cardProdClon.children[3].innerText = "Precio: " + prod.precio
-    galeria.appendChild(cardProdClon)
+const carrito = [
+
+]
+
+
+
+// Creo la card y la muestro en el DOM
+
+productos.forEach(producto => {
+    const cardProd = document.createElement('div')
+cardProd.innerHTML = `<h3> ${producto.item} </h3>
+                    <p> ID: ${producto.idProd} </p>
+                    <p> Descripción: ${producto.desc} </p>
+                    <p> Precio: ${producto.precio} </p>
+                    <button id  ="btnAddCarrito"> Añadir al carro </button>
+                    `
+
+galeria.append(cardProd)
+
+
+});
+
+
+const btnAddCarrito = document.getElementById(btnAddCarrito);
+
+
+btnAddCarrito.addEventListener('click', () => {
+    console.log("holandaa")
 })
+
 

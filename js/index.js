@@ -412,7 +412,7 @@ const galeria = document.querySelector("#galery")
 
 
 
-
+// Creo el form para añadir productos
 
 formularioAddProd.addEventListener('submit', (event) => {
     event.preventDefault() 
@@ -428,9 +428,18 @@ formularioAddProd.addEventListener('submit', (event) => {
         alert("Ese ID ya está en uso, ingreselo nuevamente")
     } else {
         productos.push( new Producto(idProd, item, desc, precio) )
-
-    }
-
+        galeria.innerHTML = ""
+        productos.forEach(productoAdd => {
+        const cardProdAdd = document.createElement('div')
+        cardProdAdd.innerHTML = `<h3> ${productoAdd.item} </h3>
+                            <p class="textcenter precio"> ID: ${productoAdd.idProd} </p>
+                            <p class="textcenter descprod"> Descripción: ${productoAdd.desc} </p>
+                            <p class="textcenter precio"> Precio: ${productoAdd.precio} </p>
+                            <button id="agregar-${productoAdd.idProd}" onclick="funcAgregarCarrito(${productoAdd.idProd})" class="btnAddCarrito buttonbord"> Añadir al carro </button>
+                            `
+        
+        galeria.append(cardProdAdd)
+    })}
 
 
     console.log(productos)
@@ -449,6 +458,26 @@ modalFormDiv.addEventListener('click', (evento) => {
 })
 
 
+
+// Creo la card y la muestro en el DOM
+
+productos.forEach( (producto) => {
+    const cardProd = document.createElement('div')
+
+cardProd.className = "producto"
+cardProd.innerHTML = `<h3> ${producto.item} </h3>
+                    <p class="textcenter precio"> ID: ${producto.idProd} </p>
+                    <p class="textcenter descprod"> Descripción: ${producto.desc} </p>
+                    <p class="textcenter precio"> Precio: ${producto.precio} </p>
+                    <button id="agregar-${producto.idProd}" onclick="funcAgregarCarrito(${producto.idProd})" class="btnAddCarrito buttonbord"> Añadir al carro </button>
+                    `
+
+
+galeria.append(cardProd)
+
+
+});
+
 // Carrito
 
 const carrito = [
@@ -456,29 +485,56 @@ const carrito = [
 ]
 
 
+const funcAgregarCarrito = (id) => {
+    const prodCarrito = productos.find( (producto) => producto.idProd === id)
+    carrito.push(prodCarrito)
 
-// Creo la card y la muestro en el DOM
+    Swal.fire({
+        position: 'bottom-end',
+        icon: 'success',
+        title: '¡Producto añadido con éxito!',
+        showConfirmButton: false,
+        timer: 1000
+    })
 
-productos.forEach(producto => {
-    const cardProd = document.createElement('div')
-cardProd.innerHTML = `<h3> ${producto.item} </h3>
-                    <p> ID: ${producto.idProd} </p>
-                    <p> Descripción: ${producto.desc} </p>
-                    <p> Precio: ${producto.precio} </p>
-                    <button id  ="btnAddCarrito"> Añadir al carro </button>
-                    `
+    console.log(carrito)
+    renderCarrito()
+}
 
-galeria.append(cardProd)
+// Variables del carrito
 
+const botonCarrito = document.querySelector("#botonCarrito")
+const modalCarritoCont = document.querySelector("#modalCarritoCont")
+const modalCarrito = document.querySelector("#ModalCarrito")
+const cerrarModalCarrito = document.querySelector("#cerrarModalCarrito")
 
-});
-
-
-const btnAddCarrito = document.getElementById(btnAddCarrito);
-
-
-btnAddCarrito.addEventListener('click', () => {
-    console.log("holandaa")
+botonCarrito.addEventListener('click', () => {
+    modalCarritoCont.classList.add("verModalCarrito")
 })
+
+cerrarModalCarrito.addEventListener('click', () => {
+    modalCarritoCont.classList.remove("verModalCarrito")
+})
+
+
+// Mostrar en carrito
+
+const renderCarrito = () => {
+    modalCarritoCont.innerHTML = ""
+
+    carrito.forEach((prod) => {
+        const prodEnCarrito = document.createElement('div');
+        prodEnCarrito.className = "productoEnCarrito"
+
+        prodEnCarrito.innerHTML = `<p class="textcenter precio"> ID: ${prod.item} </p>
+                                <p class="textcenter precio"> ID: ${prod.idProd} </p>
+                                <p class="textcenter precio"> ID: ${prod.precio} </p>
+                                <button id="btnEliminarCarr"> </button>
+        `
+        modalCarritoCont.append(prodEnCarrito)
+    })
+}
+
+
 
 

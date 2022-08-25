@@ -1,124 +1,318 @@
-
-body {
-    align-items: center;
-}
-
-header > h1 {
-    text-align: center;
-    font-size: 3rem;
-}
-
-
-.subtitle {
-    background-color: #f3d6d6;
-    font-family: "Orelega One", cursive;
-    text-align: center;
-    border-radius: 10px;
-    width: 100%;
-    padding: 7px;
-    margin-top: 100px;
-    margin-bottom: 20px;
-    font-size: 2em;
-}
-
+/* Empiezo scss variables */
+/* Termino scss variables */
 .boton-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #f3d6d6;
-    width: 100%;
-    height: 3vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f3d6d6;
+  width: 100%;
+  height: 3vw;
 }
 
 .buttonAddProd {
-    width: 200px;
-    height: 30px;
-    border: 2px solid black;
-    border-radius: 10px;
-    color: white;
-    background-color: black;
+  width: 200px;
+  height: 30px;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  background-color: black;
 }
 
 .buttonAddProd:hover {
-    background-color: rgb(65, 75, 78);
+  background-color: rgb(65, 75, 78);
 }
 
 .modalContenedor {
-    background-color: rgba(0, 0, 0, 0.5);
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: -1;
-    transition: all .4s ease-in;
-
-    opacity: 0;
-    visibility: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: all 0.4s ease-in;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .modalForm {
-    width: 600px;
-    height: 500px;
-    background-color: beige;
-    padding: 10px;
-    text-align: center;
-    font-size: 2rem;
-    border-radius: 25px;
+  width: 600px;
+  height: 500px;
+  background-color: #f3d6d6;
+  padding: 10px;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 25px;
 }
 
 .verModalForm {
-    opacity: 1;
-    visibility: visible;
-    z-index: 10;
+  opacity: 1;
+  visibility: visible;
+  z-index: 1000;
 }
 
 .btnAgregarProd {
-    width: 60%;
+  width: 60%;
 }
 
-.grid-container {
+.textcenter {
+  text-align: center;
+}
+
+.body {
+  background-color: #809FC8;
+}
+
+.text_right {
+  text-align: right;
+}
+
+.nodotlist {
+  list-style: none;
+  text-decoration: none;
+}
+
+.buttonbord {
+  border-radius: 10px;
+  margin-left: 260px;
+  width: 100px;
+}
+
+.subtitle {
+  background-color: #f3d6d6;
+  font-family: "Orelega One", cursive;
+  text-align: center;
+  border-radius: 10px;
+  width: 100%;
+  padding: 7px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+}
+
+.logo {
+  height: 70px;
+  width: 100px;
+}
+
+.navbar {
+  position: fixed;
+  width: 100%;
+  border-radius: 10px;
+  justify-content: center;
+  z-index: 1000;
+  border: solid 2px black;
+}
+
+.navbar-collapse {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-link {
+  font-size: 1.5rem;
+  margin-right: 3px;
+}
+
+.nav-contacto {
+  background-color: #724E84;
+  border: 3px solid aqua;
+  border-radius: 5px;
+  display: flex;
+}
+.nav-contacto:hover {
+  background: aqua;
+  border: 3px solid #724E84;
+}
+
+.bodyin {
+  background-color: #809FC8;
+}
+
+#carouselExampleDark {
+  margin-top: 100px;
+  margin-bottom: -50px;
+}
+
+@media screen and (min-width: 768px) {
+  .galery {
     display: grid;
-    gap: 1em;
-    justify-items: center;
-    justify-content: center;
-    width: 100%;
-    background-color: lightcoral;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 30px;
+    grid-template-areas: "header header header" "main main main" "main main main" "footer footer footer";
+  }
+  .grid-container > div {
+    justify-self: center;
+  }
+}
+.grid-header {
+  grid-area: header;
+}
+
+.grid-main {
+  grid-area: main;
+}
+
+.grid-footer {
+  grid-area: footer;
+}
+
+.logo {
+  width: 60px;
+}
+
+.header {
+  background-color: aqua;
+  width: 100%;
+  height: 150px;
+  border: solid 2px red;
+}
+
+.headerind {
+  background-color: #222;
+  border: 2px solid #222;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.contenedorCarrito {
+  display: flex;
+  justify-content: center;
+}
+
+.botonCarrito {
+  border: none;
+  font-size: 40px;
+  width: 90px;
+  margin-left: 50px;
+  color: #724E84;
+  border-radius: 5px;
+}
+.botonCarrito:hover {
+  color: #809FC8;
+}
+
+.modalCarritoCont {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: all 0.4s ease-in;
+  display: flex;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.modalCarrito {
+  height: 800px;
+  width: 1000px;
+  background-color: #f3d6d6;
+  padding: 10px;
+  text-align: center;
+  font-size: 2rem;
+  border-radius: 25px;
+  box-shadow: 0px 25px 40px rgba(22, 135, 217, 0.2);
+}
+
+.verModalCarrito {
+  opacity: 1;
+  visibility: visible;
+  z-index: 1000;
+}
+
+#cerrarModalCarrito {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+#precioTotal {
+  font-size: 1.5rem;
+  font-weight: 500;
 }
 
 .grid-container > div {
-    width: 250px;
-    height: 380px;
-    margin-top: 30px;
-    background-color: whitesmoke;
-    border: 3px solid black;
-    padding: 5px;
-    
+  background-color: #783278;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 700px;
+  width: 400px;
+  margin-top: 20px;
+  margin-bottom: 40px;
+  border: solid 3px #406FAD;
+  border-radius: 20px;
 }
 
 .grid-container > div > h3 {
-    color: rgb(206, 109, 96);
-    background-color: lightgreen;
-    font-weight: bold;
-    width: 100%;
-    text-align: center;
-    font-size: 1.8em;
-    margin-bottom: 90px;
+  color: #783278;
+  font-family: "Orelega One", cursive;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.3em;
+  background-color: #f3d6d6;
 }
 
-.grid-container > div > p {
-    font-weight: bold;
-    text-align: center;
-    margin-top: 20px;
-    font-size: 1.3em;
+.nombreprod {
+  color: #783278;
+  font-family: "Orelega One", cursive;
+  font-weight: bold;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+  font-size: 2.3em;
+  background-color: #f3d6d6;
 }
 
-.grid-container > div > button {
-    margin-top: 10px;
-    border-radius: 10px;
-    margin-left: 100px;
-
+.precio {
+  color: rgb(27, 21, 21);
+  font-size: 1.7em;
+  background-color: #724E84;
+  text-decoration: underline;
+  font-weight: bolder;
 }
+
+.descprod {
+  background-color: #724E84;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 100%;
+  color: white;
+  font-size: 1.6em;
+}
+
+.volverinicio {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 15px;
+  margin-right: 45px;
+  z-index: 100;
+  border: solid 2px aqua;
+  border-radius: 2px;
+  background-color: #724E84;
+  text-decoration: none;
+}
+.volverinicio:hover {
+  background-color: rgb(83, 183, 223);
+  border: solid 2px #724E84;
+  transform: scale(1.2, 1.2);
+  transition: 1s;
+}
+.volverinicio a {
+  text-decoration: none;
+  text-align: center;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: rgba(0, 0, 0, 0.5490196078);
+  font-weight: bold;
+}
+
+/*# sourceMappingURL=styles.css.map */

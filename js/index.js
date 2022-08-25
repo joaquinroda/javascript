@@ -524,7 +524,7 @@ const renderCarrito = () => {
 
     carrito.forEach((prod) => {
         const prodEnCarrito = document.createElement('div');
-        prodEnCarrito.className = "productoEnCarrito"
+        prodEnCarrito.className = "productoEnCarr"
 
         prodEnCarrito.innerHTML = `<p>${prod.item} </p>
                                 <p>ID: ${prod.idProd}</p>

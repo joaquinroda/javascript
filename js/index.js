@@ -526,9 +526,9 @@ const renderCarrito = () => {
         const prodEnCarrito = document.createElement('div');
         prodEnCarrito.className = "productoEnCarrito"
 
-        prodEnCarrito.innerHTML = `<p class="textcenter precio"> ID: ${prod.item} </p>
-                                <p class="textcenter precio"> ID: ${prod.idProd} </p>
-                                <p class="textcenter precio"> ID: ${prod.precio} </p>
+        prodEnCarrito.innerHTML = `<p>${prod.item} </p>
+                                <p>ID: ${prod.idProd}</p>
+                                <p>Precio: ${prod.precio}$ </p>
                                 <button id="btnEliminarCarr"> </button>
         `
         modalCarritoCont.append(prodEnCarrito)
